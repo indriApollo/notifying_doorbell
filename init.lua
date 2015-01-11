@@ -59,7 +59,11 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formspec_context[name].pos then
 		local pos = formspec_context[name].pos
 		formspec_context[name] = nil -- we free the context
-		minetest.get_meta(pos):set_string("doorbell_id",fields.doorbell_id)
+		if fields.doorbell_id == "" then
+			minetest.get_meta(pos):set_string("doorbell_id","noname")
+		else
+			minetest.get_meta(pos):set_string("doorbell_id",fields.doorbell_id)
+		end
 		minetest.chat_send_player(name,"* Doorbell updated")
 	else
 		minetest.chat_send_player(name,"* Something went wrong, please try again")

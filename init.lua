@@ -15,7 +15,7 @@ end
 minetest.register_node("notifying_doorbell:doorbell", {
 	tiles = { "notifying_doorbell.png" },
 	inventory_image = "notifying_doorbell_inv.png",
-	description = "Doorbell",
+	description = "Notifying Doorbell",
 	drawtype = "nodebox",
 	paramtype = "light",
     paramtype2 = "facedir",

@@ -5,10 +5,12 @@ local formspec_context = {}
 
 notifying_doorbell.edit = function(pos,name)
 	formspec_context[name] = {pos = pos}
-	minetest.get_meta(pos):set_string("doorbell_owner",name)
+	local meta = minetest.get_meta(pos)
+	local doorbell_id = meta:get_string("doorbell_id") or ""
+	meta:set_string("doorbell_owner",name)
 	minetest.show_formspec(name, "notifying_doorbell:edit",
 				"size[4,3]" ..
-				"field[1,1;3,1;doorbell_id;Bell Name;]" ..
+				"field[1,1;3,1;doorbell_id;Bell Name;"..doorbell_id.."]" ..
 				"button_exit[1,2;2,1;exit;Save]")
 end
 
